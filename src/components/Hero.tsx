@@ -1,9 +1,11 @@
 import { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const { t } = useLanguage();
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -133,11 +135,11 @@ export default function Hero() {
           className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center pointer-events-none"
         >
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[1.1] mb-6 text-white drop-shadow-sm">
-            Premium custom glass.<br className="hidden md:block" />
-            <span className="text-white/70">Designed by you.<br className="hidden md:block" /> Built for your home.</span>
+            {t.hero.title1}<br className="hidden md:block" />
+            <span className="text-white/70">{t.hero.title2}</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/70 font-light max-w-3xl mx-auto">
-            Experience millimeter-perfect precision and factory-direct pricing.
+            {t.hero.subtitle}
           </p>
         </motion.div>
 
@@ -147,8 +149,8 @@ export default function Hero() {
           className="absolute inset-0 z-10 flex flex-col justify-center items-center px-6 text-center pointer-events-none"
         >
           <div className="max-w-3xl">
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[1.1] text-white mb-6 drop-shadow-md">Seamless Integration.</h2>
-            <p className="text-xl md:text-2xl text-white/70 font-light leading-relaxed">Precision-cut glass that fits your space flawlessly. Watch as your custom design opens up new possibilities.</p>
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[1.1] text-white mb-6 drop-shadow-md">{t.hero.phase1Title}</h2>
+            <p className="text-xl md:text-2xl text-white/70 font-light leading-relaxed">{t.hero.phase1Desc}</p>
           </div>
         </motion.div>
 
@@ -158,8 +160,8 @@ export default function Hero() {
           className="absolute inset-0 z-10 flex flex-col justify-center items-center px-6 text-center pointer-events-none"
         >
           <div className="max-w-3xl">
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[1.1] text-white mb-6 drop-shadow-md">Endless Configurations.</h2>
-            <p className="text-xl md:text-2xl text-white/70 font-light leading-relaxed">From crystal clear to frosted privacy glass. Choose the perfect finish, hardware, and dimensions for your project.</p>
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[1.1] text-white mb-6 drop-shadow-md">{t.hero.phase2Title}</h2>
+            <p className="text-xl md:text-2xl text-white/70 font-light leading-relaxed">{t.hero.phase2Desc}</p>
           </div>
         </motion.div>
 
@@ -169,8 +171,8 @@ export default function Hero() {
           className="absolute inset-0 z-10 flex flex-col justify-center items-center px-6 text-center pointer-events-none"
         >
           <div className="max-w-3xl">
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[1.1] text-white mb-6 drop-shadow-md">Crafted for Wellness.</h2>
-            <p className="text-xl md:text-2xl text-white/70 font-light leading-relaxed">Whether it's a luxury sauna, a bespoke shower, or an elegant interior door, we deliver factory-direct perfection.</p>
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[1.1] text-white mb-6 drop-shadow-md">{t.hero.phase3Title}</h2>
+            <p className="text-xl md:text-2xl text-white/70 font-light leading-relaxed">{t.hero.phase3Desc}</p>
           </div>
         </motion.div>
 
@@ -181,17 +183,17 @@ export default function Hero() {
         >
           <div className="max-w-4xl w-full">
             <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[1.1] mb-6 text-white drop-shadow-md">
-              Design Your Sanctuary.
+              {t.hero.phase4Title}
             </h2>
             <p className="text-xl md:text-2xl text-white/70 font-light mb-12 max-w-2xl mx-auto">
-              Step into a new dimension of light and space. Configure your perfect glass solution in real-time 3D today.
+              {t.hero.phase4Desc}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button className="w-full sm:w-auto px-8 py-4 rounded-full bg-champagne text-white text-lg font-medium hover:bg-champagne/90 transition-colors shadow-[0_0_30px_rgba(196,164,124,0.3)]">
-                Start your 3D Design
+                {t.hero.btnOpen3D}
               </button>
               <button className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 border border-white/20 text-white text-lg font-medium hover:bg-white/20 transition-colors backdrop-blur-sm">
-                Explore Collections
+                {t.hero.btnInspiration}
               </button>
             </div>
           </div>
@@ -202,7 +204,7 @@ export default function Hero() {
           style={{ opacity: indicatorOpacity }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
         >
-          <div className="text-xs uppercase tracking-widest text-white/50 font-medium">Scroll to explore</div>
+          <div className="text-xs uppercase tracking-widest text-white/50 font-medium">{t.hero.scroll}</div>
           <div className="w-px h-12 bg-gradient-to-b from-white/50 to-transparent" />
         </motion.div>
       </div>

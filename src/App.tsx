@@ -4,7 +4,9 @@
  */
 
 import { useEffect } from 'react';
-import Lenis from 'lenis';
+import { ReactLenis, useLenis } from 'lenis/react';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -15,37 +17,53 @@ import HowItWorks from './components/HowItWorks';
 import ForProfessionals from './components/ForProfessionals';
 import Footer from './components/Footer';
 
-export default function App() {
+gsap.registerPlugin(ScrollTrigger);
+
+function SmoothScrollSetup() {
+  const lenis = useLenis((scroll) => {
+    ScrollTrigger.update();
+  });
+
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    });
+    if (!lenis) return;
 
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+    const update = (time: number) => {
+      lenis.raf(time * 1000);
+    };
 
-    requestAnimationFrame(raf);
+    gsap.ticker.add(update);
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
-      lenis.destroy();
+      gsap.ticker.remove(update);
     };
-  }, []);
+  }, [lenis]);
 
+  return null;
+}
+
+export default function App() {
   return (
-    <div className="bg-obsidian text-white min-h-screen selection:bg-champagne selection:text-white">
-      <Navbar />
-      <main>
-        <Hero />
-        <ValuePillars />
-        <ProductShowcase />
-        <TechEngine />
-        <HowItWorks />
-        <ForProfessionals />
-      </main>
-      <Footer />
-    </div>
+    <ReactLenis root autoRaf={false} options={{
+      lerp: 0.07,
+      wheelMultiplier: 1,
+      smoothWheel: true,
+      smoothTouch: false,
+      syncTouch: false,
+    }}>
+      <SmoothScrollSetup />
+      <div className="bg-obsidian text-white min-h-screen selection:bg-champagne selection:text-white">
+        <Navbar />
+        <main>
+          <Hero />
+          <ValuePillars />
+          <ProductShowcase />
+          <TechEngine />
+          <HowItWorks />
+          <ForProfessionals />
+        </main>
+        <Footer />
+      </div>
+    </ReactLenis>
   );
 }

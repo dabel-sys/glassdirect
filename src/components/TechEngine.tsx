@@ -1,16 +1,18 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
-
-const features = [
-  "Instant Live Pricing: Watch the exact price update as you design. No hidden fees.",
-  "Customize Every Detail: Choose Clear, Frosted, or Smoke glass.",
-  "Premium Hardware: Select Matte Black, Brushed Gold, or Chrome finishes.",
-  "Smart Safety Checks: Our system automatically calculates glass thickness and weight limits."
-];
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function TechEngine() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
+
+  const features = [
+    t.tech.f1,
+    t.tech.f2,
+    t.tech.f3,
+    t.tech.f4
+  ];
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
@@ -33,10 +35,10 @@ export default function TechEngine() {
           className="order-2 lg:order-1"
         >
           <h2 className="text-4xl md:text-5xl font-medium tracking-tighter leading-tight mb-6">
-            Order custom glass with zero stress.
+            {t.tech.title}
           </h2>
           <p className="text-xl text-white/50 font-light mb-10">
-            Say goodbye to complex quotation processes and waiting weeks for a price. Our proprietary 3D technology puts you in complete control.
+            {t.tech.desc}
           </p>
           
           <ul className="space-y-6">
@@ -97,7 +99,7 @@ export default function TechEngine() {
             className="absolute -left-4 md:-left-10 bottom-20 glass-panel rounded-2xl p-6 shadow-2xl border border-white/10"
           >
             <button className="text-sm font-medium text-white hover:text-champagne transition-colors flex items-center space-x-2">
-              <span>Try the 3D Designer (Free)</span>
+              <span>{t.tech.btnTry}</span>
               <ArrowRight size={16} />
             </button>
           </motion.div>

@@ -1,38 +1,41 @@
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
-
-const products = [
-  {
-    title: "Bespoke Shower Doors",
-    subtitle: "Upgrade your bathroom.",
-    image: "/images/Gemini_Generated_Image_lpzjholpzjholpzj.jpeg",
-    colSpan: "col-span-1 md:col-span-2",
-    rowSpan: "row-span-1 md:row-span-2"
-  },
-  {
-    title: "Interior Glass Partitions",
-    subtitle: "Let the light flow.",
-    image: "/images/Gemini_Generated_Image_6hdvd66hdvd66hdv.jpeg",
-    colSpan: "col-span-1",
-    rowSpan: "row-span-1"
-  },
-  {
-    title: "Patio Sliding Glass Walls",
-    subtitle: "Extend your outdoor living.",
-    image: "/images/Gemini_Generated_Image_agulvdagulvdagul.jpeg",
-    colSpan: "col-span-1 md:col-span-2",
-    rowSpan: "row-span-1"
-  },
-  {
-    title: "Sauna & Steam Room Doors",
-    subtitle: "Spa luxury at home.",
-    image: "/images/Gemini_Generated_Image_zam84lzam84lzam8.jpeg",
-    colSpan: "col-span-1",
-    rowSpan: "row-span-1"
-  }
-];
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function ProductShowcase() {
+  const { t } = useLanguage();
+
+  const products = [
+    {
+      title: t.products.items[0].title,
+      subtitle: t.products.items[0].subtitle,
+      image: "/images/Gemini_Generated_Image_lpzjholpzjholpzj.jpeg",
+      colSpan: "col-span-1 md:col-span-2",
+      rowSpan: "row-span-1 md:row-span-2"
+    },
+    {
+      title: t.products.items[1].title,
+      subtitle: t.products.items[1].subtitle,
+      image: "/images/Gemini_Generated_Image_6hdvd66hdvd66hdv.jpeg",
+      colSpan: "col-span-1",
+      rowSpan: "row-span-1"
+    },
+    {
+      title: t.products.items[2].title,
+      subtitle: t.products.items[2].subtitle,
+      image: "/images/Gemini_Generated_Image_agulvdagulvdagul.jpeg",
+      colSpan: "col-span-1 md:col-span-2",
+      rowSpan: "row-span-1"
+    },
+    {
+      title: t.products.items[3].title,
+      subtitle: t.products.items[3].subtitle,
+      image: "/images/Gemini_Generated_Image_zam84lzam84lzam8.jpeg",
+      colSpan: "col-span-1",
+      rowSpan: "row-span-1"
+    }
+  ];
+
   return (
     <section className="py-32 px-6 bg-charcoal relative z-20">
       <div className="max-w-7xl mx-auto">
@@ -44,7 +47,7 @@ export default function ProductShowcase() {
           className="mb-20"
         >
           <h2 className="text-4xl md:text-6xl font-medium tracking-tighter leading-tight max-w-3xl">
-            Transform every space.
+            {t.products.title}
           </h2>
         </motion.div>
 
@@ -76,7 +79,7 @@ export default function ProductShowcase() {
                 
                 <div className="overflow-hidden">
                   <button className="flex items-center space-x-2 text-champagne font-medium text-sm uppercase tracking-wider translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100">
-                    <span>Configure this style</span>
+                    <span>{t.products.btnStart}</span>
                     <ArrowRight size={16} />
                   </button>
                 </div>

@@ -1,27 +1,30 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { Factory, Truck, Eye } from 'lucide-react';
-
-const pillars = [
-  {
-    title: "Factory-Direct Pricing",
-    text: "Skip the middlemen, expensive showrooms, and pushy salespeople. Get premium European quality directly from the manufacturer at a fraction of the cost.",
-    icon: Factory
-  },
-  {
-    title: "Guaranteed Perfect Fit",
-    text: "Afraid of measuring? Don't be. With our integrated smart measuring guides, ordering made-to-measure glass has never been safer or easier.",
-    icon: Truck
-  },
-  {
-    title: "100% Visual Certainty",
-    text: "No guesswork. See exactly what you are ordering in stunning 3D, and project it directly into your room using Augmented Reality (AR) before you buy.",
-    icon: Eye
-  }
-];
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function ValuePillars() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
+
+  const pillars = [
+    {
+      title: t.pillars.p1Title,
+      text: t.pillars.p1Desc,
+      icon: Factory
+    },
+    {
+      title: t.pillars.p2Title,
+      text: t.pillars.p2Desc,
+      icon: Truck
+    },
+    {
+      title: t.pillars.p3Title,
+      text: t.pillars.p3Desc,
+      icon: Eye
+    }
+  ];
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]

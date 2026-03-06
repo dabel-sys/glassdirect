@@ -1,7 +1,10 @@
 import { motion } from 'motion/react';
 import { Briefcase } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function ForProfessionals() {
+  const { t } = useLanguage();
+
   return (
     <section className="py-32 px-6 bg-obsidian relative z-20 overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -19,15 +22,15 @@ export default function ForProfessionals() {
           </div>
           
           <h2 className="relative z-10 text-4xl md:text-5xl font-medium tracking-tighter leading-tight mb-6 text-white">
-            Are you an installer or interior builder?
+            {t.pro.title}
           </h2>
           
           <p className="relative z-10 text-xl text-white/50 font-light mb-12 max-w-3xl mx-auto leading-relaxed">
-            We know your time is money. Join GlassDirect Pro for exclusive access to our B2B portal, faster ordering, saved project configurations, and a scalable trade discount structure.
+            {t.pro.desc}
           </p>
           
           <button className="relative z-10 px-10 py-5 rounded-full border border-champagne text-champagne text-lg font-medium hover:bg-champagne hover:text-white transition-all duration-300 shadow-[0_0_30px_rgba(196,164,124,0.1)]">
-            Apply for Trade Account
+            {t.pro.btnApply}
           </button>
         </motion.div>
       </div>

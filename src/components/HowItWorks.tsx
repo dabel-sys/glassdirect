@@ -1,26 +1,28 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
-
-const steps = [
-  {
-    num: "1",
-    title: "Measure & Design",
-    desc: "Use our intuitive 3D designer and simple video guides to configure your setup."
-  },
-  {
-    num: "2",
-    title: "Precision Manufacturing",
-    desc: "Custom cut and tempered at our high-tech European facility for millimeter-perfect accuracy."
-  },
-  {
-    num: "3",
-    title: "Direct Delivery",
-    desc: "Safely packaged and delivered directly to your doorstep, ready for simple DIY installation or your local contractor."
-  }
-];
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function HowItWorks() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
+
+  const steps = [
+    {
+      num: "1",
+      title: t.howItWorks.steps[0].title,
+      desc: t.howItWorks.steps[0].desc
+    },
+    {
+      num: "2",
+      title: t.howItWorks.steps[1].title,
+      desc: t.howItWorks.steps[1].desc
+    },
+    {
+      num: "3",
+      title: t.howItWorks.steps[2].title,
+      desc: t.howItWorks.steps[2].desc
+    }
+  ];
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start center", "end center"]
@@ -32,7 +34,7 @@ export default function HowItWorks() {
     <section ref={containerRef} className="py-32 px-6 bg-charcoal relative z-20">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-medium tracking-tighter leading-tight mb-20 text-center">
-          From your screen to your doorstep.
+          {t.howItWorks.title}
         </h2>
 
         <div className="relative">
