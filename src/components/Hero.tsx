@@ -46,7 +46,7 @@ export default function Hero() {
             className="w-full h-full object-cover opacity-40"
           >
             {/* Replace this src with the URL of your uploaded video */}
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-modern-architecture-building-with-glass-facade-4172-large.mp4" type="video/mp4" />
+            <source src="/images/hero3d.mp4" type="video/mp4" />
             {/* Fallback image */}
             <img 
               src="https://picsum.photos/seed/architecture/1920/1080" 
