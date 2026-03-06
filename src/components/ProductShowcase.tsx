@@ -5,28 +5,28 @@ const products = [
   {
     title: "Bespoke Shower Doors",
     subtitle: "Upgrade your bathroom.",
-    image: "https://picsum.photos/seed/shower/800/600",
+    image: "/images/Gemini_Generated_Image_6hdvd66hdvd66hdv.jpeg",
     colSpan: "col-span-1 md:col-span-2",
     rowSpan: "row-span-1 md:row-span-2"
   },
   {
     title: "Interior Glass Partitions",
     subtitle: "Let the light flow.",
-    image: "https://picsum.photos/seed/interior/800/600",
+    image: "/images/Gemini_Generated_Image_agulvdagulvdagul.jpeg",
     colSpan: "col-span-1",
     rowSpan: "row-span-1"
   },
   {
     title: "Patio Sliding Glass Walls",
     subtitle: "Extend your outdoor living.",
-    image: "https://picsum.photos/seed/patio/800/600",
+    image: "/images/Gemini_Generated_Image_lpzjholpzjholpzj.jpeg",
     colSpan: "col-span-1 md:col-span-2",
     rowSpan: "row-span-1"
   },
   {
     title: "Sauna & Steam Room Doors",
     subtitle: "Spa luxury at home.",
-    image: "https://picsum.photos/seed/sauna/800/600",
+    image: "/images/Gemini_Generated_Image_zam84lzam84lzam8.jpeg",
     colSpan: "col-span-1",
     rowSpan: "row-span-1"
   }
