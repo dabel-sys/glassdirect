@@ -20,16 +20,35 @@ export default function Hero() {
     // Ensure the video doesn't play automatically
     video.pause();
 
+    let targetTime = 0;
+    let currentTime = 0;
+    let animationFrameId: number;
+
     const unsubscribe = scrollYProgress.on("change", (latest) => {
       if (video.duration) {
-        // Use requestAnimationFrame to ensure smooth updates
-        requestAnimationFrame(() => {
-          video.currentTime = latest * video.duration;
-        });
+        targetTime = latest * video.duration;
       }
     });
 
-    return () => unsubscribe();
+    const smoothScroll = () => {
+      if (video.duration) {
+        // Lerp (Linear Interpolation) for smoother scrubbing
+        currentTime += (targetTime - currentTime) * 0.08;
+        
+        // Only update the video time if the difference is large enough to avoid decoder thrashing
+        if (Math.abs(currentTime - video.currentTime) > 0.04) {
+          video.currentTime = currentTime;
+        }
+      }
+      animationFrameId = requestAnimationFrame(smoothScroll);
+    };
+
+    smoothScroll();
+
+    return () => {
+      unsubscribe();
+      cancelAnimationFrame(animationFrameId);
+    };
   }, [scrollYProgress]);
 
   return (
@@ -43,7 +62,7 @@ export default function Hero() {
             muted 
             playsInline 
             preload="auto"
-            className="w-full h-full object-cover opacity-40"
+            className="w-full h-full object-cover"
           >
             {/* Replace this src with the URL of your uploaded video */}
             <source src="/images/hero3d.mp4" type="video/mp4" />
@@ -54,9 +73,6 @@ export default function Hero() {
               className="w-full h-full object-cover" 
             />
           </video>
-          {/* Gradient overlays for text readability and blending into the next section */}
-          <div className="absolute inset-0 bg-gradient-to-b from-obsidian/60 via-obsidian/20 to-obsidian" />
-          <div className="absolute inset-0 bg-gradient-to-r from-obsidian/50 via-transparent to-obsidian/50" />
         </div>
 
         {/* Content */}
