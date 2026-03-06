@@ -10,9 +10,23 @@ export default function Hero() {
     offset: ["start start", "end start"]
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  // Fade out the text quickly (in the first 15% of the scroll) so the user can focus on the 3D door animation
-  const opacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
+  // Animation sequences mapped to scroll progress (0 to 1)
+  const introOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
+  const introY = useTransform(scrollYProgress, [0, 0.12], [0, -100]);
+
+  const t1Opacity = useTransform(scrollYProgress, [0.15, 0.2, 0.3, 0.35], [0, 1, 1, 0]);
+  const t1Y = useTransform(scrollYProgress, [0.15, 0.35], [100, -100]);
+
+  const t2Opacity = useTransform(scrollYProgress, [0.35, 0.4, 0.5, 0.55], [0, 1, 1, 0]);
+  const t2Y = useTransform(scrollYProgress, [0.35, 0.55], [100, -100]);
+
+  const t3Opacity = useTransform(scrollYProgress, [0.55, 0.6, 0.7, 0.75], [0, 1, 1, 0]);
+  const t3Y = useTransform(scrollYProgress, [0.55, 0.75], [100, -100]);
+
+  const t4Opacity = useTransform(scrollYProgress, [0.75, 0.8, 1], [0, 1, 1]);
+  const t4Y = useTransform(scrollYProgress, [0.75, 1], [100, 0]);
+
+  const indicatorOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -54,10 +68,10 @@ export default function Hero() {
   }, [scrollYProgress]);
 
   return (
-    // Increased height to 500vh to give the 7-second video more scroll space, making the animation feel more controlled
-    <section ref={containerRef} className="relative h-[500vh] w-full bg-obsidian">
+    <section ref={containerRef} className="relative h-[600vh] w-full bg-obsidian">
       {/* Sticky container */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
+      <div className="sticky top-0 h-screen w-full overflow-hidden">
+        
         {/* Video Background */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <video 
@@ -67,9 +81,7 @@ export default function Hero() {
             preload="auto"
             className="w-full h-full object-cover"
           >
-            {/* Replace this src with the URL of your uploaded video */}
             <source src="/images/hero3d.mp4" type="video/mp4" />
-            {/* Fallback image */}
             <img 
               src="https://picsum.photos/seed/architecture/1920/1080" 
               alt="Modern Architecture" 
@@ -78,51 +90,80 @@ export default function Hero() {
           </video>
         </div>
 
-        {/* Content */}
+        {/* Intro Content */}
         <motion.div 
-          style={{ y, opacity }}
-          className="relative z-10 max-w-5xl mx-auto px-6 text-center mt-20"
+          style={{ opacity: introOpacity, y: introY }}
+          className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center pointer-events-none"
         >
-          <motion.h1 
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[1.1] mb-6 text-black"
-          >
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[1.1] mb-6 text-black">
             Premium custom glass.<br className="hidden md:block" />
             <span className="text-black/60">Designed by you.<br className="hidden md:block" /> Built for your home.</span>
-          </motion.h1>
-          
-          <motion.p 
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="text-xl md:text-2xl text-black/60 font-light mb-12 max-w-3xl mx-auto"
-          >
-            Experience millimeter-perfect precision and factory-direct pricing, without the traditional showroom markup. Design your perfect fit in real-time 3D.
-          </motion.p>
-          
-          <motion.div 
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <button className="w-full sm:w-auto px-8 py-4 rounded-full bg-champagne text-white text-lg font-medium hover:bg-champagne/90 transition-colors shadow-[0_0_30px_rgba(196,164,124,0.3)]">
-              Start your 3D Design
-            </button>
-            <button className="w-full sm:w-auto px-8 py-4 rounded-full glass-panel text-black text-lg font-medium hover:bg-black/5 transition-colors">
-              Explore Collections
-            </button>
-          </motion.div>
+          </h1>
+          <p className="text-xl md:text-2xl text-black/60 font-light max-w-3xl mx-auto">
+            Experience millimeter-perfect precision and factory-direct pricing.
+          </p>
+        </motion.div>
+
+        {/* Phase 1 - Left Aligned */}
+        <motion.div 
+          style={{ opacity: t1Opacity, y: t1Y }}
+          className="absolute inset-0 z-10 flex flex-col justify-center items-start px-8 md:px-24 pointer-events-none"
+        >
+          <div className="max-w-lg text-left glass-panel p-8 rounded-3xl border border-black/5 shadow-2xl">
+            <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-black mb-4">Uncompromising Clarity</h2>
+            <p className="text-lg text-black/60 font-light leading-relaxed">Starting with 8mm toughened safety glass, cut to the millimeter for an absolutely perfect fit in your space.</p>
+          </div>
+        </motion.div>
+
+        {/* Phase 2 - Right Aligned */}
+        <motion.div 
+          style={{ opacity: t2Opacity, y: t2Y }}
+          className="absolute inset-0 z-10 flex flex-col justify-center items-end px-8 md:px-24 pointer-events-none"
+        >
+          <div className="max-w-lg text-left glass-panel p-8 rounded-3xl border border-black/5 shadow-2xl">
+            <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-black mb-4">Engineered Perfection</h2>
+            <p className="text-lg text-black/60 font-light leading-relaxed">Fitted with solid brass hardware, featuring a flawless chrome finish that resists wear and corrosion.</p>
+          </div>
+        </motion.div>
+
+        {/* Phase 3 - Left Aligned */}
+        <motion.div 
+          style={{ opacity: t3Opacity, y: t3Y }}
+          className="absolute inset-0 z-10 flex flex-col justify-center items-start px-8 md:px-24 pointer-events-none"
+        >
+          <div className="max-w-lg text-left glass-panel p-8 rounded-3xl border border-black/5 shadow-2xl">
+            <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-black mb-4">Effortless Motion</h2>
+            <p className="text-lg text-black/60 font-light leading-relaxed">Experience a smooth, silent, and perfectly balanced opening mechanism designed for daily luxury.</p>
+          </div>
+        </motion.div>
+
+        {/* Phase 4 - Conclusion & CTA */}
+        <motion.div 
+          style={{ opacity: t4Opacity, y: t4Y }}
+          className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center"
+        >
+          <div className="glass-panel p-10 md:p-16 rounded-[3rem] border border-black/5 shadow-2xl max-w-4xl w-full">
+            <h2 className="text-4xl md:text-6xl font-medium tracking-tighter leading-[1.1] mb-6 text-black">
+              Your Vision, Realized.
+            </h2>
+            <p className="text-xl text-black/60 font-light mb-10 max-w-2xl mx-auto">
+              Step into a new dimension of light and space. Design your perfect fit in real-time 3D today.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <button className="w-full sm:w-auto px-8 py-4 rounded-full bg-champagne text-white text-lg font-medium hover:bg-champagne/90 transition-colors shadow-[0_0_30px_rgba(196,164,124,0.3)]">
+                Start your 3D Design
+              </button>
+              <button className="w-full sm:w-auto px-8 py-4 rounded-full bg-white border border-black/10 text-black text-lg font-medium hover:bg-black/5 transition-colors">
+                Explore Collections
+              </button>
+            </div>
+          </div>
         </motion.div>
 
         {/* Scroll Indicator */}
         <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          style={{ opacity: indicatorOpacity }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
         >
           <div className="text-xs uppercase tracking-widest text-black/40 font-medium">Scroll to explore</div>
           <div className="w-px h-12 bg-gradient-to-b from-black/40 to-transparent" />
