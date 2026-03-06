@@ -43,11 +43,22 @@ export default function Hero() {
     const video = videoRef.current;
     if (!video) return;
 
-    // Ensure the video doesn't play automatically
-    video.pause();
+    // iOS/Safari fix: Force load and play/pause to unlock the video playhead
+    video.load();
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        video.pause();
+      }).catch(() => {
+        video.pause();
+      });
+    } else {
+      video.pause();
+    }
 
     let targetTime = 0;
     let currentTime = 0;
+    let lastVideoTime = -1;
     let animationFrameId: number;
 
     const unsubscribe = scrollYProgress.on("change", (latest) => {
@@ -57,15 +68,17 @@ export default function Hero() {
     });
 
     const smoothScroll = () => {
-      if (video.duration) {
+      // Only scrub if we have metadata (readyState >= 1)
+      if (video.readyState >= 1 && video.duration) {
         // Lerp (Linear Interpolation) for smoother scrubbing
-        // Increased lerp factor to 0.1 for better responsiveness
-        currentTime += (targetTime - currentTime) * 0.1;
+        currentTime += (targetTime - currentTime) * 0.08;
         
-        // Performance fix: Only update the video time if the difference is > 0.04 seconds
-        // (approx 1 frame at 24/25fps). Updating faster than the video framerate causes decoder thrashing and severe stuttering.
-        if (Math.abs(currentTime - video.currentTime) > 0.04) {
-          video.currentTime = currentTime;
+        // Snap to 30fps (0.0333s) to help the browser's video decoder find exact frames
+        const snappedTime = Number((Math.round(currentTime * 30) / 30).toFixed(3));
+        
+        if (snappedTime !== lastVideoTime) {
+          video.currentTime = snappedTime;
+          lastVideoTime = snappedTime;
         }
       }
       animationFrameId = requestAnimationFrame(smoothScroll);
@@ -90,6 +103,7 @@ export default function Hero() {
             ref={videoRef}
             muted 
             playsInline 
+            autoPlay
             preload="auto"
             className="w-full h-full object-cover will-change-transform"
             style={{ transform: 'translateZ(0)' }}
