@@ -10,19 +10,19 @@ export default function ForProfessionals() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative bg-charcoal p-12 md:p-20 flex flex-col items-center text-center border border-black/5 rounded-[3rem] overflow-hidden group"
+          className="relative bg-charcoal p-12 md:p-20 flex flex-col items-center text-center border border-white/5 rounded-[3rem] overflow-hidden group"
         >
           <div className="absolute inset-0 bg-gradient-to-t from-champagne/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
           
-          <div className="relative z-10 w-20 h-20 rounded-3xl bg-black/5 flex items-center justify-center mb-10 border border-black/10 shadow-2xl">
+          <div className="relative z-10 w-20 h-20 rounded-3xl bg-white/5 flex items-center justify-center mb-10 border border-white/10 shadow-2xl">
             <Briefcase className="w-10 h-10 text-champagne" />
           </div>
           
-          <h2 className="relative z-10 text-4xl md:text-5xl font-medium tracking-tighter leading-tight mb-6">
+          <h2 className="relative z-10 text-4xl md:text-5xl font-medium tracking-tighter leading-tight mb-6 text-white">
             Are you an installer or interior builder?
           </h2>
           
-          <p className="relative z-10 text-xl text-black/50 font-light mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="relative z-10 text-xl text-white/50 font-light mb-12 max-w-3xl mx-auto leading-relaxed">
             We know your time is money. Join GlassDirect Pro for exclusive access to our B2B portal, faster ordering, saved project configurations, and a scalable trade discount structure.
           </p>
           

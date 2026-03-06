@@ -14,7 +14,7 @@ import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <div className="bg-obsidian text-black min-h-screen selection:bg-champagne selection:text-white">
+    <div className="bg-obsidian text-white min-h-screen selection:bg-champagne selection:text-white">
       <Navbar />
       <main>
         <Hero />

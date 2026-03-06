@@ -95,7 +95,7 @@ export default function Hero() {
   return (
     <section ref={containerRef} className="relative h-[600vh] w-full bg-obsidian">
       {/* Sticky container */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
+      <div className="sticky top-0 h-[100dvh] w-full overflow-hidden">
         
         {/* Video Background */}
         <div className="absolute inset-0 z-0 pointer-events-none">

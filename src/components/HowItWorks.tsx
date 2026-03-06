@@ -37,7 +37,7 @@ export default function HowItWorks() {
 
         <div className="relative">
           {/* Vertical Line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-black/10 -translate-x-1/2" />
+          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-white/10 -translate-x-1/2" />
           
           {/* Animated Glowing Line */}
           <motion.div 
@@ -63,10 +63,10 @@ export default function HowItWorks() {
                       whileInView={{ opacity: 1, x: 0, y: 0 }}
                       viewport={{ once: true, margin: "-100px" }}
                       transition={{ duration: 0.6, delay: 0.2 }}
-                      className="glass-panel p-8 rounded-3xl border border-black/5 hover:border-champagne/30 transition-colors duration-500"
+                      className="glass-panel p-8 rounded-3xl border border-white/5 hover:border-champagne/30 transition-colors duration-500"
                     >
-                      <h3 className="text-2xl font-medium mb-4">{step.title}</h3>
-                      <p className="text-black/60 font-light leading-relaxed">{step.desc}</p>
+                      <h3 className="text-2xl font-medium mb-4 text-white">{step.title}</h3>
+                      <p className="text-white/60 font-light leading-relaxed">{step.desc}</p>
                     </motion.div>
                   </div>
 

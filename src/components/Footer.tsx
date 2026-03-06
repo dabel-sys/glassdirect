@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 
 export default function Footer() {
   return (
-    <footer className="bg-obsidian relative z-20 pt-32 pb-12 px-6 border-t border-black/5">
+    <footer className="bg-obsidian relative z-20 pt-32 pb-12 px-6 border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         
         {/* Massive CTA Panel */}
@@ -11,11 +11,11 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="glass-panel rounded-[3rem] p-16 md:p-24 text-center mb-32 relative overflow-hidden group border border-black/10"
+          className="glass-panel rounded-[3rem] p-16 md:p-24 text-center mb-32 relative overflow-hidden group border border-white/10"
         >
           <div className="absolute inset-0 bg-gradient-to-b from-champagne/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
           
-          <h2 className="text-5xl md:text-7xl font-medium tracking-tighter leading-tight mb-12 relative z-10">
+          <h2 className="text-5xl md:text-7xl font-medium tracking-tighter leading-tight mb-12 relative z-10 text-white">
             Ready to bring your<br/>vision to life?
           </h2>
           
@@ -25,14 +25,14 @@ export default function Footer() {
         </motion.div>
 
         {/* Footer Links */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 text-sm text-black/40 font-light">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 text-sm text-white/40 font-light">
           <div className="flex flex-wrap justify-center md:justify-start gap-6 md:gap-8">
-            <a href="#" className="hover:text-black transition-colors">Measuring Guides</a>
-            <a href="#" className="hover:text-black transition-colors">Installation Videos</a>
-            <a href="#" className="hover:text-black transition-colors">FAQ</a>
-            <a href="#" className="hover:text-black transition-colors">Contact Us</a>
-            <a href="#" className="hover:text-black transition-colors">Shipping & Returns</a>
-            <a href="#" className="hover:text-black transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors">Measuring Guides</a>
+            <a href="#" className="hover:text-white transition-colors">Installation Videos</a>
+            <a href="#" className="hover:text-white transition-colors">FAQ</a>
+            <a href="#" className="hover:text-white transition-colors">Contact Us</a>
+            <a href="#" className="hover:text-white transition-colors">Shipping & Returns</a>
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-champagne transition-colors font-medium">Trade Login</a>
           </div>
           

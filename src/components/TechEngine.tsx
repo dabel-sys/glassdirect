@@ -35,7 +35,7 @@ export default function TechEngine() {
           <h2 className="text-4xl md:text-5xl font-medium tracking-tighter leading-tight mb-6">
             Order custom glass with zero stress.
           </h2>
-          <p className="text-xl text-black/50 font-light mb-10">
+          <p className="text-xl text-white/50 font-light mb-10">
             Say goodbye to complex quotation processes and waiting weeks for a price. Our proprietary 3D technology puts you in complete control.
           </p>
           
@@ -47,7 +47,7 @@ export default function TechEngine() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex items-start space-x-4 text-black/70 text-lg font-light"
+                className="flex items-start space-x-4 text-white/70 text-lg font-light"
               >
                 <CheckCircle2 className="w-6 h-6 text-champagne shrink-0 mt-0.5" />
                 <span>{feature}</span>
@@ -60,7 +60,7 @@ export default function TechEngine() {
           {/* Main Device Mockup */}
           <motion.div 
             style={{ rotateX, rotateY, y: y1 }}
-            className="relative w-full max-w-md aspect-[4/3] rounded-[2rem] border-[8px] border-gray-100 bg-white shadow-[0_0_100px_rgba(0,0,0,0.05)] overflow-hidden"
+            className="relative w-full max-w-md aspect-[4/3] rounded-[2rem] border-[8px] border-white/10 bg-black shadow-[0_0_100px_rgba(0,0,0,0.5)] overflow-hidden"
           >
             <img 
               src="https://picsum.photos/seed/configurator/800/600" 
@@ -72,15 +72,15 @@ export default function TechEngine() {
             
             {/* UI Overlay */}
             <div className="absolute bottom-6 left-6 right-6 glass-panel rounded-2xl p-4">
-              <div className="h-2 w-1/3 bg-black/10 rounded-full mb-3" />
-              <div className="h-2 w-2/3 bg-black/5 rounded-full" />
+              <div className="h-2 w-1/3 bg-white/20 rounded-full mb-3" />
+              <div className="h-2 w-2/3 bg-white/10 rounded-full" />
             </div>
           </motion.div>
 
           {/* Floating Mobile AR Mockup */}
           <motion.div 
             style={{ y: y2 }}
-            className="absolute -right-4 md:-right-10 top-1/2 -translate-y-1/2 w-32 md:w-40 aspect-[9/19] rounded-[2rem] border-[6px] border-gray-100 bg-white shadow-2xl overflow-hidden"
+            className="absolute -right-4 md:-right-10 top-1/2 -translate-y-1/2 w-32 md:w-40 aspect-[9/19] rounded-[2rem] border-[6px] border-white/10 bg-black shadow-2xl overflow-hidden"
           >
             <img 
               src="https://picsum.photos/seed/ar/400/800" 
@@ -94,9 +94,9 @@ export default function TechEngine() {
           {/* Floating CTA */}
           <motion.div 
             style={{ y: y2 }}
-            className="absolute -left-4 md:-left-10 bottom-20 glass-panel rounded-2xl p-6 shadow-2xl border border-black/5"
+            className="absolute -left-4 md:-left-10 bottom-20 glass-panel rounded-2xl p-6 shadow-2xl border border-white/10"
           >
-            <button className="text-sm font-medium text-black hover:text-champagne transition-colors flex items-center space-x-2">
+            <button className="text-sm font-medium text-white hover:text-champagne transition-colors flex items-center space-x-2">
               <span>Try the 3D Designer (Free)</span>
               <ArrowRight size={16} />
             </button>
