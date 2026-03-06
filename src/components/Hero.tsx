@@ -29,13 +29,13 @@ export default function Hero() {
   const t2Y = useTransform(scrollYProgress, [0.32, 0.55], [50, -50]);
 
   // Phase 3: Hallway Reveal - Right Side (0.60 - 0.80)
-  const t3Opacity = useTransform(scrollYProgress, [0.58, 0.64, 0.76, 0.82], [0, 1, 1, 0]);
-  const t3Y = useTransform(scrollYProgress, [0.58, 0.82], [50, -50]);
+  const t3Opacity = useTransform(scrollYProgress, [0.58, 0.64, 0.74, 0.78], [0, 1, 1, 0]);
+  const t3Y = useTransform(scrollYProgress, [0.58, 0.78], [50, -50]);
 
-  // Phase 4: Conclusion (0.85 - 1.00)
-  const t4Opacity = useTransform(scrollYProgress, [0.85, 0.90, 1], [0, 1, 1]);
-  const t4Y = useTransform(scrollYProgress, [0.85, 1], [50, 0]);
-  const t4Scale = useTransform(scrollYProgress, [0.85, 1], [0.95, 1]);
+  // Phase 4: Conclusion (0.78 - 1.00)
+  const t4Opacity = useTransform(scrollYProgress, [0.78, 0.84, 1], [0, 1, 1]);
+  const t4Y = useTransform(scrollYProgress, [0.78, 1], [50, 0]);
+  const t4Scale = useTransform(scrollYProgress, [0.78, 1], [0.95, 1]);
 
   const indicatorOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
 
@@ -59,11 +59,12 @@ export default function Hero() {
     const smoothScroll = () => {
       if (video.duration) {
         // Lerp (Linear Interpolation) for smoother scrubbing
-        // Lowered to 0.05 for an even smoother, more premium feel with the new video
-        currentTime += (targetTime - currentTime) * 0.05;
+        // Increased lerp factor to 0.1 for better responsiveness
+        currentTime += (targetTime - currentTime) * 0.1;
         
-        // Only update the video time if the difference is large enough to avoid decoder thrashing
-        if (Math.abs(currentTime - video.currentTime) > 0.01) {
+        // Performance fix: Only update the video time if the difference is > 0.04 seconds
+        // (approx 1 frame at 24/25fps). Updating faster than the video framerate causes decoder thrashing and severe stuttering.
+        if (Math.abs(currentTime - video.currentTime) > 0.04) {
           video.currentTime = currentTime;
         }
       }
@@ -90,7 +91,8 @@ export default function Hero() {
             muted 
             playsInline 
             preload="auto"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover will-change-transform"
+            style={{ transform: 'translateZ(0)' }}
           >
             <source src="/images/hero3d.mp4" type="video/mp4" />
             <img 
