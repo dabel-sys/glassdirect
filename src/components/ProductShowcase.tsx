@@ -5,21 +5,21 @@ const products = [
   {
     title: "Bespoke Shower Doors",
     subtitle: "Upgrade your bathroom.",
-    image: "/images/Gemini_Generated_Image_6hdvd66hdvd66hdv.jpeg",
+    image: "/images/Gemini_Generated_Image_lpzjholpzjholpzj.jpeg",
     colSpan: "col-span-1 md:col-span-2",
     rowSpan: "row-span-1 md:row-span-2"
   },
   {
     title: "Interior Glass Partitions",
     subtitle: "Let the light flow.",
-    image: "/images/Gemini_Generated_Image_agulvdagulvdagul.jpeg",
+    image: "/images/Gemini_Generated_Image_6hdvd66hdvd66hdv.jpeg",
     colSpan: "col-span-1",
     rowSpan: "row-span-1"
   },
   {
     title: "Patio Sliding Glass Walls",
     subtitle: "Extend your outdoor living.",
-    image: "/images/Gemini_Generated_Image_lpzjholpzjholpzj.jpeg",
+    image: "/images/Gemini_Generated_Image_agulvdagulvdagul.jpeg",
     colSpan: "col-span-1 md:col-span-2",
     rowSpan: "row-span-1"
   },
