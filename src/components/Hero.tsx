@@ -18,24 +18,32 @@ export default function Hero() {
 
   const introOpacity = useTransform(scrollYProgress, [0, 0.08], [1, 0]);
   const introY = useTransform(scrollYProgress, [0, 0.08], [0, -50]);
-  const introScale = useTransform(scrollYProgress, [0, 0.08], [1, 0.95]);
+  const introScale = useTransform(scrollYProgress, [0, 0.08], [1, 1.2]);
+  const introFilter = useTransform(scrollYProgress, [0, 0.08], ["blur(0px)", "blur(10px)"]);
 
   // Phase 1: Door Opening & Entering (0.10 - 0.30)
   const t1Opacity = useTransform(scrollYProgress, [0.10, 0.15, 0.25, 0.30], [0, 1, 1, 0]);
   const t1Y = useTransform(scrollYProgress, [0.10, 0.30], [50, -50]);
+  const t1Scale = useTransform(scrollYProgress, [0.10, 0.30], [0.8, 1.3]);
+  const t1Filter = useTransform(scrollYProgress, [0.10, 0.15, 0.25, 0.30], ["blur(10px)", "blur(0px)", "blur(0px)", "blur(10px)"]);
 
   // Phase 2: Hallway Reveal - Left Side (0.35 - 0.55)
   const t2Opacity = useTransform(scrollYProgress, [0.32, 0.38, 0.50, 0.55], [0, 1, 1, 0]);
   const t2Y = useTransform(scrollYProgress, [0.32, 0.55], [50, -50]);
+  const t2Scale = useTransform(scrollYProgress, [0.32, 0.55], [0.8, 1.3]);
+  const t2Filter = useTransform(scrollYProgress, [0.32, 0.38, 0.50, 0.55], ["blur(10px)", "blur(0px)", "blur(0px)", "blur(10px)"]);
 
   // Phase 3: Hallway Reveal - Right Side (0.60 - 0.80)
   const t3Opacity = useTransform(scrollYProgress, [0.58, 0.64, 0.74, 0.78], [0, 1, 1, 0]);
   const t3Y = useTransform(scrollYProgress, [0.58, 0.78], [50, -50]);
+  const t3Scale = useTransform(scrollYProgress, [0.58, 0.78], [0.8, 1.3]);
+  const t3Filter = useTransform(scrollYProgress, [0.58, 0.64, 0.74, 0.78], ["blur(10px)", "blur(0px)", "blur(0px)", "blur(10px)"]);
 
   // Phase 4: Conclusion (0.78 - 1.00)
   const t4Opacity = useTransform(scrollYProgress, [0.78, 0.84, 1], [0, 1, 1]);
   const t4Y = useTransform(scrollYProgress, [0.78, 1], [50, 0]);
-  const t4Scale = useTransform(scrollYProgress, [0.78, 1], [0.95, 1]);
+  const t4Scale = useTransform(scrollYProgress, [0.78, 1], [0.8, 1]);
+  const t4Filter = useTransform(scrollYProgress, [0.78, 0.84, 1], ["blur(10px)", "blur(0px)", "blur(0px)"]);
 
   const indicatorOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
 
@@ -121,7 +129,7 @@ export default function Hero() {
 
         {/* Intro Content */}
         <motion.div 
-          style={{ opacity: introOpacity, y: introY, scale: introScale }}
+          style={{ opacity: introOpacity, y: introY, scale: introScale, filter: introFilter }}
           className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center pointer-events-none"
         >
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[1.1] mb-6 text-white drop-shadow-sm">
@@ -135,7 +143,7 @@ export default function Hero() {
 
         {/* Phase 1 - Centered (Door Opening) */}
         <motion.div 
-          style={{ opacity: t1Opacity, y: t1Y }}
+          style={{ opacity: t1Opacity, y: t1Y, scale: t1Scale, filter: t1Filter }}
           className="absolute inset-0 z-10 flex flex-col justify-center items-center px-6 text-center pointer-events-none"
         >
           <div className="max-w-3xl">
@@ -146,7 +154,7 @@ export default function Hero() {
 
         {/* Phase 2 - Centered (Hallway Reveal) */}
         <motion.div 
-          style={{ opacity: t2Opacity, y: t2Y }}
+          style={{ opacity: t2Opacity, y: t2Y, scale: t2Scale, filter: t2Filter }}
           className="absolute inset-0 z-10 flex flex-col justify-center items-center px-6 text-center pointer-events-none"
         >
           <div className="max-w-3xl">
@@ -157,7 +165,7 @@ export default function Hero() {
 
         {/* Phase 3 - Centered (Moving down hallway) */}
         <motion.div 
-          style={{ opacity: t3Opacity, y: t3Y }}
+          style={{ opacity: t3Opacity, y: t3Y, scale: t3Scale, filter: t3Filter }}
           className="absolute inset-0 z-10 flex flex-col justify-center items-center px-6 text-center pointer-events-none"
         >
           <div className="max-w-3xl">
@@ -168,7 +176,7 @@ export default function Hero() {
 
         {/* Phase 4 - Conclusion & CTA */}
         <motion.div 
-          style={{ opacity: t4Opacity, y: t4Y, scale: t4Scale }}
+          style={{ opacity: t4Opacity, y: t4Y, scale: t4Scale, filter: t4Filter }}
           className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center"
         >
           <div className="max-w-4xl w-full">
