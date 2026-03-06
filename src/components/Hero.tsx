@@ -133,34 +133,34 @@ export default function Hero() {
           </p>
         </motion.div>
 
-        {/* Phase 1 - Left Aligned (Door Opening) */}
+        {/* Phase 1 - Centered (Door Opening) */}
         <motion.div 
           style={{ opacity: t1Opacity, y: t1Y }}
-          className="absolute inset-0 z-10 flex flex-col justify-center items-start px-8 md:px-24 pointer-events-none"
+          className="absolute inset-0 z-10 flex flex-col justify-center items-center px-6 text-center pointer-events-none"
         >
-          <div className="max-w-3xl text-left">
+          <div className="max-w-3xl">
             <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[1.1] text-white mb-6 drop-shadow-md">Seamless Integration.</h2>
             <p className="text-xl md:text-2xl text-white/70 font-light leading-relaxed">Precision-cut glass that fits your space flawlessly. Watch as your custom design opens up new possibilities.</p>
           </div>
         </motion.div>
 
-        {/* Phase 2 - Right Aligned (Hallway Reveal) */}
+        {/* Phase 2 - Centered (Hallway Reveal) */}
         <motion.div 
           style={{ opacity: t2Opacity, y: t2Y }}
-          className="absolute inset-0 z-10 flex flex-col justify-center items-end px-8 md:px-24 pointer-events-none"
+          className="absolute inset-0 z-10 flex flex-col justify-center items-center px-6 text-center pointer-events-none"
         >
-          <div className="max-w-3xl text-right">
+          <div className="max-w-3xl">
             <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[1.1] text-white mb-6 drop-shadow-md">Endless Configurations.</h2>
             <p className="text-xl md:text-2xl text-white/70 font-light leading-relaxed">From crystal clear to frosted privacy glass. Choose the perfect finish, hardware, and dimensions for your project.</p>
           </div>
         </motion.div>
 
-        {/* Phase 3 - Left Aligned (Moving down hallway) */}
+        {/* Phase 3 - Centered (Moving down hallway) */}
         <motion.div 
           style={{ opacity: t3Opacity, y: t3Y }}
-          className="absolute inset-0 z-10 flex flex-col justify-center items-start px-8 md:px-24 pointer-events-none"
+          className="absolute inset-0 z-10 flex flex-col justify-center items-center px-6 text-center pointer-events-none"
         >
-          <div className="max-w-3xl text-left">
+          <div className="max-w-3xl">
             <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[1.1] text-white mb-6 drop-shadow-md">Crafted for Wellness.</h2>
             <p className="text-xl md:text-2xl text-white/70 font-light leading-relaxed">Whether it's a luxury sauna, a bespoke shower, or an elegant interior door, we deliver factory-direct perfection.</p>
           </div>
