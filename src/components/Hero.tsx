@@ -11,7 +11,8 @@ export default function Hero() {
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  // Fade out the text quickly (in the first 15% of the scroll) so the user can focus on the 3D door animation
+  const opacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -33,10 +34,11 @@ export default function Hero() {
     const smoothScroll = () => {
       if (video.duration) {
         // Lerp (Linear Interpolation) for smoother scrubbing
-        currentTime += (targetTime - currentTime) * 0.08;
+        // Lowered to 0.05 for an even smoother, more premium feel with the new video
+        currentTime += (targetTime - currentTime) * 0.05;
         
         // Only update the video time if the difference is large enough to avoid decoder thrashing
-        if (Math.abs(currentTime - video.currentTime) > 0.04) {
+        if (Math.abs(currentTime - video.currentTime) > 0.01) {
           video.currentTime = currentTime;
         }
       }
@@ -52,7 +54,8 @@ export default function Hero() {
   }, [scrollYProgress]);
 
   return (
-    <section ref={containerRef} className="relative h-[300vh] w-full bg-obsidian">
+    // Increased height to 500vh to give the 7-second video more scroll space, making the animation feel more controlled
+    <section ref={containerRef} className="relative h-[500vh] w-full bg-obsidian">
       {/* Sticky container */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
         {/* Video Background */}
