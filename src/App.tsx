@@ -15,6 +15,7 @@ import ProductShowcase from './components/ProductShowcase';
 import TechEngine from './components/TechEngine';
 import HowItWorks from './components/HowItWorks';
 import ForProfessionals from './components/ForProfessionals';
+import MiniDesigner from './components/MiniDesigner';
 import Footer from './components/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -61,6 +62,7 @@ export default function App() {
           <TechEngine />
           <HowItWorks />
           <ForProfessionals />
+          <MiniDesigner />
         </main>
         <Footer />
       </div>
