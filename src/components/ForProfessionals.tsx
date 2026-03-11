@@ -6,14 +6,14 @@ export default function ForProfessionals() {
   const { t } = useLanguage();
 
   return (
-    <section className="py-32 px-6 bg-[var(--color-obsidian)] relative z-20 overflow-hidden">
+    <section className="py-32 px-6 bg-obsidian relative z-20 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative bg-[var(--color-charcoal)] p-12 md:p-20 flex flex-col items-center text-center border border-[var(--color-white-dynamic)]/5 rounded-[3rem] overflow-hidden group"
+          className="relative bg-charcoal p-12 md:p-20 flex flex-col items-center text-center border border-white/5 rounded-[3rem] overflow-hidden group"
         >
           <div className="absolute inset-0 bg-gradient-to-t from-champagne/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
           

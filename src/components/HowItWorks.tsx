@@ -31,7 +31,7 @@ export default function HowItWorks() {
   const pathLength = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
 
   return (
-    <section ref={containerRef} className="py-32 px-6 bg-[var(--color-charcoal)] relative z-20">
+    <section ref={containerRef} className="py-32 px-6 bg-charcoal relative z-20">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-medium tracking-tighter leading-tight mb-20 text-center">
           {t.howItWorks.title}
@@ -54,7 +54,7 @@ export default function HowItWorks() {
                 <div key={index} className={`relative flex items-center ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} flex-row`}>
                   
                   {/* Number Node */}
-                  <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-[var(--color-obsidian)] border-2 border-champagne flex items-center justify-center text-champagne font-medium z-10 shadow-[0_0_20px_rgba(196,164,124,0.2)]">
+                  <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-obsidian border-2 border-champagne flex items-center justify-center text-champagne font-medium z-10 shadow-[0_0_20px_rgba(196,164,124,0.2)]">
                     {step.num}
                   </div>
 

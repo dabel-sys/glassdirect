@@ -37,7 +37,7 @@ export default function ProductShowcase() {
   ];
 
   return (
-    <section className="py-32 px-6 bg-[var(--color-charcoal)] relative z-20">
+    <section className="py-32 px-6 bg-charcoal relative z-20">
       <div className="max-w-7xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
@@ -67,14 +67,14 @@ export default function ProductShowcase() {
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#000000]/80 via-[#000000]/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
               
               <div className="absolute inset-0 p-8 flex flex-col justify-end">
                 <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <h3 className="text-2xl font-medium text-[#ffffff] mb-1">
+                  <h3 className="text-2xl font-medium text-white mb-1">
                     {product.title}
                   </h3>
-                  <p className="text-[#ffffff]/70 font-light mb-4">{product.subtitle}</p>
+                  <p className="text-white/70 font-light mb-4">{product.subtitle}</p>
                 </div>
                 
                 <div className="overflow-hidden">

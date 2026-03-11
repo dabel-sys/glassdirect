@@ -24,7 +24,7 @@ export default function TechEngine() {
   const rotateY = useTransform(scrollYProgress, [0, 1], [-10, 10]);
 
   return (
-    <section ref={containerRef} className="py-32 px-6 bg-[var(--color-obsidian)] relative z-20 overflow-hidden">
+    <section ref={containerRef} className="py-32 px-6 bg-obsidian relative z-20 overflow-hidden">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
         
         <motion.div 
@@ -62,7 +62,7 @@ export default function TechEngine() {
           {/* Main Device Mockup */}
           <motion.div 
             style={{ rotateX, rotateY, y: y1 }}
-            className="relative w-full max-w-md aspect-[4/3] rounded-[2rem] border-[8px] border-[#ffffff]/10 bg-[#000000] shadow-[0_0_100px_rgba(0,0,0,0.5)] overflow-hidden"
+            className="relative w-full max-w-md aspect-[4/3] rounded-[2rem] border-[8px] border-white/10 bg-black shadow-[0_0_100px_rgba(0,0,0,0.5)] overflow-hidden"
           >
             <img 
               src="https://picsum.photos/seed/configurator/800/600" 
@@ -70,19 +70,19 @@ export default function TechEngine() {
               className="w-full h-full object-cover opacity-80"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#000000]/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-black/60 to-transparent" />
             
             {/* UI Overlay */}
             <div className="absolute bottom-6 left-6 right-6 glass-panel rounded-2xl p-4">
-              <div className="h-2 w-1/3 bg-[#ffffff]/20 rounded-full mb-3" />
-              <div className="h-2 w-2/3 bg-[#ffffff]/10 rounded-full" />
+              <div className="h-2 w-1/3 bg-white/20 rounded-full mb-3" />
+              <div className="h-2 w-2/3 bg-white/10 rounded-full" />
             </div>
           </motion.div>
 
           {/* Floating Mobile AR Mockup */}
           <motion.div 
             style={{ y: y2 }}
-            className="absolute -right-4 md:-right-10 top-1/2 -translate-y-1/2 w-32 md:w-40 aspect-[9/19] rounded-[2rem] border-[6px] border-[#ffffff]/10 bg-[#000000] shadow-2xl overflow-hidden"
+            className="absolute -right-4 md:-right-10 top-1/2 -translate-y-1/2 w-32 md:w-40 aspect-[9/19] rounded-[2rem] border-[6px] border-white/10 bg-black shadow-2xl overflow-hidden"
           >
             <img 
               src="https://picsum.photos/seed/ar/400/800" 

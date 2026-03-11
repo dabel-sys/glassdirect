@@ -53,7 +53,7 @@ export default function App() {
       syncTouch: false,
     }}>
       <SmoothScrollSetup />
-      <div className="bg-[var(--color-obsidian)] text-[var(--color-white-dynamic)] min-h-screen selection:bg-champagne selection:text-[var(--color-black-dynamic)]">
+      <div className="bg-obsidian text-white min-h-screen selection:bg-champagne selection:text-white">
         <Navbar />
         <main>
           <Hero />
