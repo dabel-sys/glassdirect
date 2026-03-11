@@ -31,7 +31,7 @@ export default function ValuePillars() {
   });
 
   return (
-    <section ref={containerRef} className="py-32 px-6 relative z-20 bg-obsidian">
+    <section ref={containerRef} className="py-32 px-6 relative z-20 bg-[var(--color-obsidian)]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {pillars.map((pillar, index) => {

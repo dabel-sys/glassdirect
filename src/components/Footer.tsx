@@ -5,7 +5,7 @@ export default function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-obsidian relative z-20 pt-32 pb-12 px-6 border-t border-white/5">
+    <footer className="bg-[var(--color-obsidian)] relative z-20 pt-32 pb-12 px-6 border-t border-[var(--color-white-dynamic)]/5">
       <div className="max-w-7xl mx-auto">
         
         {/* Massive CTA Panel */}
