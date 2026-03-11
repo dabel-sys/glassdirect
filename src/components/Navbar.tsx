@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { Menu, Globe } from 'lucide-react';
+import { Menu, Sun, Moon } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { Language } from '../i18n/translations';
+import { useTheme } from '../theme/ThemeContext';
 
 export default function Navbar() {
-  const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
 
   const languages: { code: Language; name: string }[] = [
     { code: 'EN', name: 'English' },
@@ -34,36 +35,31 @@ export default function Navbar() {
             <a href="#inspiration" className="hover:text-white transition-colors">{t.nav.inspiration}</a>
           </div>
 
-          <div className="flex items-center space-x-6">
-            <div className="relative">
-              <button 
-                onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                className="flex items-center space-x-1 text-sm font-medium text-white/70 hover:text-white transition-colors"
-              >
-                <Globe size={16} />
-                <span>{language}</span>
-              </button>
-              
-              {isLangMenuOpen && (
-                <div className="absolute top-full right-0 mt-4 w-32 bg-obsidian border border-white/10 rounded-2xl shadow-2xl overflow-hidden py-2">
-                  {languages.map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => {
-                        setLanguage(lang.code);
-                        setIsLangMenuOpen(false);
-                      }}
-                      className={`w-full text-left px-4 py-2 text-sm transition-colors ${
-                        language === lang.code 
-                          ? 'text-champagne bg-white/5' 
-                          : 'text-white/70 hover:text-white hover:bg-white/5'
-                      }`}
-                    >
-                      {lang.name}
-                    </button>
-                  ))}
-                </div>
-              )}
+          <div className="flex items-center space-x-4">
+            {/* Theme Toggle */}
+            <button 
+              onClick={toggleTheme}
+              className="p-2 text-white/70 hover:text-white transition-colors rounded-full hover:bg-white/10"
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+
+            {/* Innovative Language Selector */}
+            <div className="hidden md:flex bg-white/5 rounded-full p-1 border border-white/10 backdrop-blur-md items-center">
+              {languages.map((lang) => (
+                <button
+                  key={lang.code}
+                  onClick={() => setLanguage(lang.code)}
+                  className={`px-3 py-1.5 text-xs font-semibold rounded-full transition-all duration-300 ${
+                    language === lang.code 
+                      ? 'bg-white text-black shadow-sm' 
+                      : 'text-white/50 hover:text-white/90'
+                  }`}
+                >
+                  {lang.code}
+                </button>
+              ))}
             </div>
 
             <button className="hidden md:block px-5 py-2.5 rounded-full bg-champagne text-white text-sm font-semibold hover:bg-champagne/90 transition-colors shadow-[0_0_20px_rgba(196,164,124,0.3)]">

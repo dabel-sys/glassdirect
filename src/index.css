@@ -4,34 +4,71 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   
-  --color-obsidian: #050505;
-  --color-charcoal: #111111;
+  --color-obsidian: var(--bg-obsidian);
+  --color-charcoal: var(--bg-charcoal);
   --color-champagne: #C4A47C;
   --color-chrome: #E0E0E0;
   --color-matte-black: #000000;
+  
+  /* Dynamic inverted colors */
+  --color-white: var(--color-white-dynamic);
+  --color-black: var(--color-black-dynamic);
+  --color-zinc-400: var(--color-zinc-400-dynamic);
+  --color-zinc-500: var(--color-zinc-500-dynamic);
+  --color-zinc-800: var(--color-zinc-800-dynamic);
+  --color-zinc-900: var(--color-zinc-900-dynamic);
+}
+
+:root {
+  /* Light mode variables */
+  --bg-obsidian: #f4f4f5; /* zinc-100 */
+  --bg-charcoal: #ffffff;
+  
+  --color-white-dynamic: #18181b; /* zinc-900 */
+  --color-black-dynamic: #ffffff; /* white */
+  
+  --color-zinc-400-dynamic: #71717a; /* zinc-500 */
+  --color-zinc-500-dynamic: #52525b; /* zinc-600 */
+  --color-zinc-800-dynamic: #e4e4e7; /* zinc-200 */
+  --color-zinc-900-dynamic: #d4d4d8; /* zinc-300 */
+}
+
+.dark {
+  /* Dark mode variables */
+  --bg-obsidian: #050505;
+  --bg-charcoal: #111111;
+  
+  --color-white-dynamic: #ffffff;
+  --color-black-dynamic: #000000;
+  
+  --color-zinc-400-dynamic: #a1a1aa;
+  --color-zinc-500-dynamic: #71717a;
+  --color-zinc-800-dynamic: #27272a;
+  --color-zinc-900-dynamic: #18181b;
 }
 
 body {
   font-family: var(--font-sans);
   background-color: var(--color-obsidian);
-  color: #ffffff;
+  color: var(--color-white-dynamic);
   overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* Glassmorphism utilities */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.03);
+  background: color-mix(in srgb, var(--color-white-dynamic) 3%, transparent);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid color-mix(in srgb, var(--color-white-dynamic) 8%, transparent);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .glass-panel-dark {
-  background: rgba(0, 0, 0, 0.4);
+  background: color-mix(in srgb, var(--color-obsidian) 40%, transparent);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid color-mix(in srgb, var(--color-white-dynamic) 5%, transparent);
 }
 
 /* Hide scrollbar for horizontal scroll areas */
